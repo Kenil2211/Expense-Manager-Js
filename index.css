@@ -1,0 +1,33 @@
+body{
+    background-color: silver;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+}
+#form{
+    background-color: black;
+}
+.btn{
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.btn:hover{
+    background-color: yellow;
+    border: 3px solid purple;
+    border-radius: 10px;
+}
+
+form{
+    
+    border: 1px solid red;
+    height: fit-content;
+    width: fit-content;
+    padding: 20px;
+    color: white;
+    font-size: 20px;
+}
+
+form div{
+    margin: 20px;
+}

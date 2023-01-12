@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mainPage.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Document</title>
+</head>
+
+<body style="background-color: black;">
+    <h2 style="text-align: center;color: crimson;">EXPENSE MANAGER</h2>
+    <div style="display: flex; gap: 2rem;margin: 5rem;">
+        <div style="width: fit-content; display: block;">
+            <select name="menu" id="menu1" class="menu">
+                <option value="">Select</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Food">Food</option>
+                <option value="Medical">Medical</option>
+                <option value="Travel">Travel</option>
+                <option value="Others">Others</option>
+            </select>
+            <input type="text" placeholder="₹ XXX...." class="amt"><br>
+
+            <select name="menu" id="menu2" class="menu">
+                <option value="">Select</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Food">Food</option>
+                <option value="Medical">Medical</option>
+                <option value="Travel">Travel</option>
+                <option value="Others">Others</option>
+            </select>
+            <input type="text" placeholder="₹ XXX...." class="amt"><br>
+
+
+            <select name="menu" id="menu3" class="menu">
+                <option value="">Select</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Food">Food</option>
+                <option value="Medical">Medical</option>
+                <option value="Travel">Travel</option>
+                <option value="Others">Others</option>
+            </select>
+            <input type="text" placeholder="₹ XXX...." class="amt"> <br><br>
+
+
+            <input type="submit" value="submit" id="submit">
+        </div>
+        <div style="width: 500px;height: 300px; visibility: hidden;" id="c-div">
+            <canvas id="myChart"></canvas>
+            <script>
+                var temp = []
+                document.getElementById('submit').addEventListener('click', () => {
+                    var x = document.getElementsByClassName('amt')
+                    for (var i = 0; i < x.length; i++) {
+
+                        temp.push((parseInt(x[i].value)))
+                    }
+                    // console.log(temp)
+                })
+
+
+                var temp1 = []
+                document.getElementById('submit').addEventListener('click', () => {
+                    var x1 = document.getElementsByClassName('menu')
+                    for (var i = 0; i < x1.length; i++) {
+
+                        temp1.push((x1[i].value))
+                    }
+                    // console.log(temp1)
+                })
+                 
+                
+
+                document.getElementById('submit').addEventListener('click', () => {
+
+                    const ctx = document.getElementById('myChart');
+                    const myChart = new Chart(ctx, {
+                        type: 'pie',
+                        data: {
+                            labels: temp1,
+                            datasets: [{
+                                label: 'Expenses (in ₹)',
+                                data: temp,
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                    document.getElementById('c-div').style.visibility = 'visible'
+                })
+            </script>
+        </div>
+
+    </div>
+    <!-- <script src="mainPage.js"></script> -->
+</body>
+
+</html>
